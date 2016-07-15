@@ -91,7 +91,7 @@ for (i = 0; i < pizzaRadioArray.length; i++) {
         var parent = event.target.parentElement;
         var select = parent.querySelector('select'); // querySelector finds the first match using CSS selector.
         select.classList.remove('hidden');
-        var selectName = select.name; // handTossed, etc...
+        var selectName = select.name; // = handTossed, thin crust, new york style, etc...
         if (selectName === 'handTossed') {
             select.innerHTML = '';
             for (choice in handTossed) {

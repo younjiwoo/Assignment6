@@ -1,9 +1,16 @@
-html{
-    background-color: #f3f3f3;
+/* CUSTOMIZED CSS */
+.hidden {
+    display: none;
 }
-label > div {
+#warningForName, #warningForEmail, #warningForPhone, #warningForState, #warningForZipcode {
     color: red;
     text-align: center;
+}
+
+/*---------------------------------*/
+
+html{
+    background-color: #f3f3f3;
 }
 .form-basic{
     max-width: 640px;
