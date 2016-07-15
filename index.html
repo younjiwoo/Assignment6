@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Basic Form</title>
+
+<link rel="stylesheet" href="demo.css">
+<link rel="stylesheet" href="form-basic.css">
+
+</head>
+
+
+<header>
+
+</header>
+
+<ul>
+    <li><a href="index.html" class="active">Basic</a></li>
+    <li><a href="form-register.html">Register</a></li>
+    <li><a href="form-login.html">Login</a></li>
+    <li><a href="form-mini.html">Mini</a></li>
+    <li><a href="form-labels-on-top.html">Labels on Top</a></li>
+    <li><a href="form-validation.html">Validation</a></li>
+    <li><a href="form-search.html">Search</a></li>
+</ul>
+
+
+<div class="main-content">
+
+    <!-- You only need this form and the form-basic.css -->
+
+<form class="form-basic" method="post" action="#">
+
+    <div class="form-title-row">
+        <h1>1. Delivery Location</h1>
+    </div>
+
+    <div class="form-row">
+        <label>
+            <span>Name</span>
+            <input id='name' type="name" name="name">
+            <div id="warningForName"></div>
+        </label>
+    </div>
+
+    <div class="form-row">
+        <label>
+            <span>Email</span>
+            <input id="email" type="email" name="email" placeholder="email@domain.com">
+            <div id="warningForEmail"></div>
+        </label>
+    </div>
+
+    <div class="form-row">
+        <label>
+            <span>Phone Number</span>
+            <input id="phoneNumber" type="phoneNumber" name="phoneNumber" placeholder="800-123-4567">
+            <div id="warningForPhone"></div>
+        </label>
+    </div>
+
+    <div class="form-row">
+        <label>
+            <span>Address Type</span>
+            <select name="dropdown" id="addressType">
+                <option value="house">House</option>
+                <option value="apartment">Apartment</option>
+                <option value="business">Business</option>
+                <option value="campus">Campus</option>
+                <option value="hotel">Hotel</option>
+                <option value="dorm">Dorm</option>
+                <option value="other" id="other">Other</option>
+                <input id="showThis" type="showThis" name="showThis" style="display:none"/>
+            </select>
+        </label>
+    </div>
+
+<!--
+    <div class="form-row">
+        <label>
+            <span>Textarea</span>
+            <textarea name="textarea"></textarea>
+        </label>
+    </div>
+-->
+
+    <div class="form-row">
+        <label>
+            <span>Street Address</span>
+            <input type="streetAddress" name="streetAddress">
+        </label>
+        <label>
+            <span>Unit Number</span>
+            <input type="unitNumber" name="unitNumber">
+        </label>
+        <label>
+            <span>City</span>
+            <input type="city" name="city">
+        </label>
+        <label>
+            <span>State</span>
+            <input id="state" type="state" name="state" placeholder="CA">
+            <div id="warningForState"></div>
+        </label>
+        <label>
+            <span>Zip Code</span>
+            <input id="zipcode" type="zipcode" name="zipcode" placeholder="12345">
+            <div id="warningForZipcode"></div>
+        </label>
+    </div>
+
+<!--
+    <div class="form-row">
+        <label>
+            <span>Checkbox</span>
+            <input type="checkbox" name="checkbox" checked>
+        </label>
+    </div>
+-->
+    <div class="form-title-row">
+            <h1>2. Build Your Order</h1>
+    </div>
+
+    <div class="form-row">
+        <label><span>Dough Options</span></label>
+        <div class="form-radio-buttons">
+
+        <label>
+            <input type="radio" name="doughOptions" class="pizzaRadio">
+            <span>Hand Tossed</span>
+            <select name="handTossed" class="hidden pizzaMenuSelect">
+                
+            </select>
+        </label>
+
+        <label>
+            <input type="radio" name="doughOptions" class="pizzaRadio">
+            <span>Thin Crust</span>
+            <select name="thinCrust" class="hidden pizzaMenuSelect">
+                
+            </select>
+        </label>
+
+        <label>
+            <input type="radio" name="doughOptions" class="pizzaRadio">
+            <span>New York Style</span>
+            <select name="nyStyle" class="hidden pizzaMenuSelect">
+                
+            </select>
+        </label>
+
+        <label>
+            <input type="radio" name="doughOptions" class="pizzaRadio">
+            <span>Gluten Free</span>
+            <select name="glutenFree" class="hidden pizzaMenuSelect">
+                
+            </select>
+        </label>
+    </div>
+
+</div>
+  
+
+    <div class="form-row">
+        <button type="submit">Submit Form</button>
+    </div>
+
+</form>
+
+</div>
+
+
+
+
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
