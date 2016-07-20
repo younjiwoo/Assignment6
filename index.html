@@ -50,7 +50,7 @@
 <div class="form-row">
     <label>
         <span>Address Type</span>
-        <select name="dropdown" id="addressType">
+        <select name="addressType" id="addressType">
             <option value="house">House</option>
             <option value="apartment">Apartment</option>
             <option value="business">Business</option>
@@ -63,14 +63,6 @@
     </label>
 </div>
 
-<!--
-<div class="form-row">
-    <label>
-        <span>Textarea</span>
-        <textarea name="textarea"></textarea>
-    </label>
-</div>
--->
 
 <div class="form-row">
     <label>
@@ -97,14 +89,8 @@
     </label>
 </div>
 
-<!--
-<div class="form-row">
-    <label>
-        <span>Checkbox</span>
-        <input type="checkbox" name="checkbox" checked>
-    </label>
-</div>
--->
+
+<!----------------------------2. Build Your Order------------------------------>
 <div class="form-title-row">
         <h1>2. Build Your Order</h1>
 </div>
@@ -112,46 +98,83 @@
 <div class="form-row" id="doughOptionID">
     <label><span>Dough Options</span></label>
     <div class="form-radio-buttons">
-
     <label>
         <input type="radio" name="doughOptions" class="pizzaRadio">
         <span>Hand Tossed</span>
-        <select name="handTossed" class="hidden pizzaMenuSelect">
-
-        </select>
+        <select name="handTossed" class="hidden doughSelect"></select>
     </label>
-
     <label>
         <input type="radio" name="doughOptions" class="pizzaRadio">
         <span>Thin Crust</span>
-        <select name="thinCrust" class="hidden pizzaMenuSelect">
-
-        </select>
+        <select name="thinCrust" class="hidden doughSelect"></select>
     </label>
-
     <label>
         <input type="radio" name="doughOptions" class="pizzaRadio">
         <span>New York Style</span>
-        <select name="nyStyle" class="hidden pizzaMenuSelect">
-
-        </select>
+        <select name="nyStyle" class="hidden doughSelect"></select>
     </label>
-
     <label>
         <input type="radio" name="doughOptions" class="pizzaRadio">
         <span>Gluten Free</span>
-        <select name="glutenFree" class="hidden pizzaMenuSelect">
-
+        <select name="glutenFree" class="hidden doughSelect"></select>
+    </label>
+    </div>
+</div>
+  
+<div class="form-row">
+    <label>
+        <span>Cheese Options</span>
+        <select name="cheeseOptions" id="cheeseOptions">
+            <option value="0">Light (no charge)</option>
+            <option value="0" selected>Normal (no charge)</option>
+            <option value="2.99">Extra ($2.99)</option>
+            <option value="3.99">Double ($3.99)</option>
         </select>
     </label>
 </div>
-
+    
+<div class="form-row">
+    <label>
+        <span>Sauce Options</span>
+        <select name="sauceOptions" id="sauceOptions">
+            <option value="0" selected>Regular Tomato (no charge)</option>
+            <option value="0.99">Hearty Tomato ($0.99)</option>
+            <option value="1.99">BBQ Sauce ($1.99)</option>
+        </select>
+    </label>
 </div>
-  
+    
+<div class="form-row">
+    <label id="toppingsID">
+        <span>Toppings</span>
+        <input type="checkbox" name="toppings" value="0.99" class="toppings" />Pepperoni
+        <input type="checkbox" name="toppings" value="0.99" class="toppings" />Sausange
+        <input type="checkbox" name="toppings" value="0.99" class="toppings" />Ham
+        <input type="checkbox" name="toppings" value="0.99" class="toppings" />Bacon
+        <input type="checkbox" name="toppings" value="0.99" class="toppings" />Salami
+        <input type="checkbox" name="toppings" value="0.99" class="toppings" />Peppers
+        <input type="checkbox" name="toppings" value="0.99" class="toppings" />Olives
+        <input type="checkbox" name="toppings" value="0.99" class="toppings" />Jalapenos
+        <input type="checkbox" name="toppings" value="0.99" class="toppings" />Mushrooms
+        <input type="checkbox" name="toppings" value="0.99" class="toppings" />Pineapple
+        <input type="checkbox" name="toppings" value="0.99" class="toppings" />Onion
+    </label>
+</div>
+    
+    
 
-    <div class="form-row">
-        <button type="submit">Submit Form</button>
-    </div>
+    
+    
+    
+    
+<div id="divTotal">
+    <h3>Total :</h3>
+    <h1 id="total"></h1>
+</div>
+    
+<div class="form-row">
+    <button id="submitBtn" type="submit">Order Your Pizza</button>
+</div>
 
 </form>
 
