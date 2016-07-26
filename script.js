@@ -1,5 +1,6 @@
 // Part 1 - Delivery Location -- #B
 function showTextarea(event) {
+   
     var currentValue = event.target.value;
     if (currentValue === 'other') {
         document.getElementById('showThis').style.display = 'inline-block';
@@ -8,20 +9,7 @@ function showTextarea(event) {
     }
 }
 
-window.onload = function() {
-    var dropdown = document.getElementById('addressType');
-    dropdown.addEventListener('change', showTextarea);
-    var name = document.getElementById('name');
-    name.addEventListener('blur', validateName);
-    var zipcode = document.getElementById('zipcode');
-    zipcode.addEventListener('blur', validateZipcode);
-    var phoneNumber = document.getElementById('phoneNumber');
-    phoneNumber.addEventListener('blur', validatePhone);
-    var email = document.getElementById('email');
-    email.addEventListener('blur', validateEmail);
-    var state = document.getElementById('state');
-    state.addEventListener('blur', validateState);
-};
+
 
 
 // Part 1 - Delivery Location -- #C
@@ -59,6 +47,38 @@ function validateState(event) {
         document.getElementById('warningForState').innerText = '';
     } else {
         document.getElementById('warningForState').innerText = 'Please enter two alphabet characters.';
+    }
+}
+
+// functions to validate "Billing Information"
+function validateBillingState(event) {
+    if (event.target.value.match(/^[a-zA-Z]{2}$/)) {
+        document.getElementById('billingWarningForState').innerText = '';
+    } else {
+        document.getElementById('billingWarningForState').innerText = 'Please enter two alphabet characters.';
+    }
+}
+function validateBillingZipcode(event) {
+    if (event.target.value.match(/^[0-9]{5}$/)) {
+        document.getElementById('billingWarningForZipcode').innerText = '';
+    } else {
+        document.getElementById('billingWarningForZipcode').innerText = 'Invalid zip code. Please try again.';
+    }
+}
+
+// functions to validate "Credit Card Information"
+function validateCCNumber(event) {
+    if(event.target.value.match(/^[0-9]{16}$/)) {
+        document.getElementById('warningForCCNumber').innerText = '';
+    } else {
+        document.getElementById('warningForCCNumber').innerText = 'Invalid Card Number.'
+    }
+}
+function validateCVC(event) {
+    if (event.target.value.match(/^[0-9]{3}$/)) {
+        document.getElementById('warningForCVC').innerText = '';
+    } else {
+        document.getElementById('warningForCVC').innerText = 'Invalid CVC Code.'
     }
 }
 
@@ -193,8 +213,61 @@ function totalCost() {
     var totalCost = Math.round((getDoughPrice() + getCheesePrice() + getSaucePrice() + getToppingPrice()) * 100 ) / 100;
     document.getElementById('total').textContent = '$' + totalCost;
 }
+// functions to get the current month & year
+function thisMonth() {
+    var ddmmyyyy = new Date();
+    return ddmmyyyy.getMonth() + 1; // because 0 is January(1).
+}
+function thisYear() {
+    var ddmmyyyy = new Date();
+    return ddmmyyyy.getFullYear();
+}
+function validateExpDate() {
+    var userMonth = parseInt(document.getElementById('monthExpDate').value);
+    var userYear = parseInt(document.getElementById('yearExpDate').value);
+    if (userYear === thisYear()) {
+        if (userMonth >= thisMonth()) {
+            document.getElementById('warningForExpDate').innerText = '';
+        } else {
+            document.getElementById('warningForExpDate').innerText = 'Expired Card. Please use a different card.';
+        }
+    } else {
+        document.getElementById('warningForExpDate').innerText = '';
+    } 
+}
+
 
 window.onload = function() {
+    
+    var dropdown = document.getElementById('addressType');
+    dropdown.addEventListener('change', showTextarea);
+    var name = document.getElementById('name');
+    name.addEventListener('blur', validateName);
+    var zipcode = document.getElementById('zipcode');
+    zipcode.addEventListener('blur', validateZipcode);
+    var phoneNumber = document.getElementById('phoneNumber');
+    phoneNumber.addEventListener('blur', validatePhone);
+    var email = document.getElementById('email');
+    email.addEventListener('blur', validateEmail);
+    
+    // Billing Information
+    var state = document.getElementById('state');
+    state.addEventListener('blur', validateState);
+    var billingState = document.getElementById('billingState');
+    billingState.addEventListener('blur', validateBillingState);
+    var billingZipcode = document.getElementById('billingZipcode');
+    billingZipcode.addEventListener('blur', validateBillingZipcode);
+    
+    // Credit Card Information
+    var ccNumber = document.getElementById('ccNumber');
+    ccNumber.addEventListener('blur', validateCCNumber);
+    var cvc = document.getElementById('cvcCode');
+    cvc.addEventListener('blur', validateCVC);
+    var monthExpDate = document.getElementById('monthExpDate');
+    monthExpDate.addEventListener('change', validateExpDate);
+    var yearExpDate = document.getElementById('yearExpDate');
+    yearExpDate.addEventListener('change', validateExpDate);
+    
     document.getElementById('cheeseOptions').addEventListener('change', totalCost);
     document.getElementById('sauceOptions').addEventListener('change', totalCost);
     document.getElementById('toppingsID').addEventListener('click', function(event) { // use 'event' to see which input/class is clicked.
@@ -211,16 +284,58 @@ window.onload = function() {
     for (i = 0; i < doughArray.length; i++) {
         doughArray[i].addEventListener('change', totalCost);
     }
-}
 
 
-
-// General Things to Consider -- step 3
-document.getElementById('submitBtn').addEventListener('click', function() {
-    if (window.confirm('Are you sure that you are done?')) {
-        
+    
+    
+// General Things to Consider -- step 3 
+    
+    var submitBtn = document.getElementById('submitBtn');
+    submitBtn.addEventListener('click', function(event){
+    event.preventDefault(); // prevents the page from going to the next page or showing a new page
+    var confirmMsg = window.confirm('Are you sure you are done with your order?');
+    if (confirmMsg === true) {
+        document.getElementById('billingInfo').style.display = 'block';
     } else {
-        return false;
+        document.getElementById('billingInfo').style.display = 'none';
     }
-});
+    });
+
+    var billingInfo = document.getElementById('billingInfo');
+    billingInfo.addEventListener('click', function() {
+        document.getElementById('billingStreet').value = document.getElementById('streetAddress').value;
+        document.getElementById('billingUnit').value = document.getElementById('unitNumber').value;
+        document.getElementById('billingCity').value = document.getElementById('city').value;
+        document.getElementById('billingState').value = document.getElementById('state').value;
+        document.getElementById('billingZipcode').value = document.getElementById('zipcode').value;
+    });
+    
+} // window.onload function ends here.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

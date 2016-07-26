@@ -2,7 +2,7 @@
 .hidden {
     display: none;
 }
-#warningForName, #warningForEmail, #warningForPhone, #warningForState, #warningForZipcode {
+#warningForName, #warningForEmail, #warningForPhone, #warningForState, #warningForZipcode, #billingWarningForZipcode, #billingWarningForState, #warningForCCNumber, #warningForCVC, #warningForExpDate {
     color: red;
     text-align: center;
 }
